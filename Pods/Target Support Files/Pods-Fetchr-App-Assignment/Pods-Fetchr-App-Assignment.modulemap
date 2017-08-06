@@ -1,0 +1,6 @@
+framework module Pods_Fetchr_App_Assignment {
+  umbrella header "Pods-Fetchr-App-Assignment-umbrella.h"
+
+  export *
+  module * { export * }
+}

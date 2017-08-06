@@ -1,0 +1,35 @@
+Fetchr-App-Assignment
+------------------------
+
+The mobile application was developed to for Fetch App Assignment. The mobile application is required to perform search for #tags by entering search term in a search bar and display status results as a list in UITableView in Main View Controller. Additionally, user mention can also searched with @userMention text. Hashtags are displayed in orange color and User Mentions are in blue color using NSAttributedString property of StatusCell - Status Label. When selecting table view cell, a list of hashtags and user mentions combined are displayed in UIAlertController as ActionSheet asking for user to search from following options by selecting on one of the listed option. This cell selections does nothing if the status contains neither (hashtag or user mention).
+
+When the search is performed, a timer (refreshTimer) is started which defaults to 30 seconds of refresh interval and re-searches with same search string. This interval can be configured by tapping on Settings (Gear Icon) from the Navigation Bar - Right Bar Button. 
+
+The mobile app uses UserDefaults for search string persistence and performs search again when the app is restarted.
+
+Models:
+
+- ParseHashTag:
+   + text: String value to save hashtag text
+   + indexStart: Int value to save start index of hashtag in status text
+   + indexEnd: Int value to save end index of hashtag in status text
+
+- ParseUserMention:
+   + text: String value to save user mention text
+   + indexStart: Int value to save start index of user mention in status text
+   + indexEnd: Int value to save end index of user mention in status text
+
+- ParseStatus:
+   + text: String value to save status text
+   + hashtags: Array of parsed hashtags
+   + usermentions: Array of parsed user mentions
+
+The process flow of the app consists:
+AppDelegate - Main View Controller - Picker View Controller
+
+Main View Controller is the initial view controller which initializes its View Model (MainViewModel) with call back handler to refresh table view data on success or display error alert controller in case of failure.
+
+Unit Tests:
+- HashTagTests: provides testing for Hashtag Model
+- UserMentionTests: provides testing for User Mention Model
+- StatusTests: provides testing for Status Model
